@@ -10,5 +10,4 @@ public interface Calculator{
     double percent(double number);
     double sqrt(double number);
     double pow(double number, double power);
-
 }

@@ -4,30 +4,12 @@ import java.awt.*;
 
 public class BasicCalculator implements Calculator {
 
+    private static final int TEXT_FIELD_WIDTH = 60;
     private JFrame f;
     private JPanel p;
-    private JButton plus;
-    private JButton minus;
-    private JButton times;
-    private JButton divide;
-    private JButton equals;
-    private JButton clear;
-    private JButton one;
-    private JButton two;
-    private JButton three;
-    private JButton four;
-    private JButton five;
-    private JButton six;
-    private JButton seven;
-    private JButton eight;
-    private JButton nine;
-    private JButton zero;
-    private JButton dot;
-    private JButton pcent;
-    private JButton sqrt;
-    private JButton sqr;
-    private JButton leftBracket;
-    private JButton rightBracket;
+    private JButton plus, minus, times, divide, equals, clear, dot, pcent;
+    private JButton one, two, three, four, five, six, seven, eight, nine, zero, leftBracket, rightBracket;
+    private JButton sqrt, sqr;
     private JTextField t;
 
     String numberBuffer;
@@ -35,6 +17,7 @@ public class BasicCalculator implements Calculator {
     public BasicCalculator(){
         f = new JFrame("Calculator");
         p = new JPanel();
+        t = new JTextField(TEXT_FIELD_WIDTH);
         plus = new JButton("+");
         minus = new JButton("-");
         times = new JButton("*");
@@ -51,7 +34,6 @@ public class BasicCalculator implements Calculator {
         eight = new JButton("8");
         nine = new JButton("9");
         zero = new JButton("0");
-        t = new JTextField(20);
         dot = new JButton(".");
         pcent = new JButton("%");
         sqrt = new JButton("sqrt");
@@ -59,29 +41,7 @@ public class BasicCalculator implements Calculator {
         leftBracket = new JButton("(");
         rightBracket = new JButton(")");
 
-        p.add(plus);
-        p.add(minus);
-        p.add(times);
-        p.add(divide);
-        p.add(equals);
-        p.add(clear);
-        p.add(one);
-        p.add(two);
-        p.add(three);
-        p.add(four);
-        p.add(five);
-        p.add(six);
-        p.add(seven);
-        p.add(eight);
-        p.add(nine);
-        p.add(zero);
-        p.add(t);
-        p.add(dot);
-        p.add(pcent);
-        p.add(sqrt);
-        p.add(sqr);
-        p.add(leftBracket);
-        p.add(rightBracket);
+        setBasicButtons();
 
         f.add(p);
         f.setSize(700, 500);
@@ -174,6 +134,33 @@ public class BasicCalculator implements Calculator {
     @Override
     public double pow(double number, double power) {
         return Math.pow(number, power);
+    }
+
+
+    private void setBasicButtons(){
+        p.add(plus);
+        p.add(minus);
+        p.add(times);
+        p.add(divide);
+        p.add(equals);
+        p.add(clear);
+        p.add(one);
+        p.add(two);
+        p.add(three);
+        p.add(four);
+        p.add(five);
+        p.add(six);
+        p.add(seven);
+        p.add(eight);
+        p.add(nine);
+        p.add(zero);
+        p.add(t);
+        p.add(dot);
+        p.add(pcent);
+        p.add(sqrt);
+        p.add(sqr);
+        p.add(leftBracket);
+        p.add(rightBracket);
     }
 
 }
