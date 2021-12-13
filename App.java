@@ -2,7 +2,10 @@
 public class App {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello World");
+
+        BasicCalculator basicCalculator = new BasicCalculator();
+        System.out.println(basicCalculator.add(1, 2, 3, 4, 5, 6));
+        //System.out.println("Hello World");
 
 
 

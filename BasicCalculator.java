@@ -1,6 +1,8 @@
 import java.lang.Math;
 
 public class BasicCalculator implements Calculator {
+    int intValue;
+    double doubleValue;
 
     @Override
     public int add(int... numbers) {
@@ -8,6 +10,7 @@ public class BasicCalculator implements Calculator {
         for(int i = 0; i < numbers.length; i++) {
            sum =+ numbers[i];
         }
+        intValue = sum;
         return sum;
     }
 
@@ -87,6 +90,13 @@ public class BasicCalculator implements Calculator {
     @Override
     public double pow(double number, double power) {
         return Math.pow(number, power);
+    }
+
+    @Override
+    public String toString() { // ---------------------------------------------------------------- need to be fixed
+        // if loop to see if double = null then print int or if not just print double
+
+        return "" + intValue;
     }
 
 }
