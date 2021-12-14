@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class BasicCalculator implements Calculator {
 
-    private static final int TEXT_FIELD_WIDTH = 60;
+    private static final int TEXT_FIELD_WIDTH = 20;
     private JFrame f;
     private JPanel p;
     private JButton plus, minus, times, divide, equals, clear, dot, pcent;
@@ -16,7 +16,14 @@ public class BasicCalculator implements Calculator {
 
     public BasicCalculator(){
         f = new JFrame("Calculator");
-        p = new JPanel();
+        p = new JPanel(new GridBagLayout());
+        
+        f.add(p);
+        f.pack();
+        f.setResizable(false);
+        f.setSize(350, 400);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         t = new JTextField(TEXT_FIELD_WIDTH);
         plus = new JButton("+");
         minus = new JButton("-");
@@ -36,17 +43,68 @@ public class BasicCalculator implements Calculator {
         zero = new JButton("0");
         dot = new JButton(".");
         pcent = new JButton("%");
-        sqrt = new JButton("sqrt");
-        sqr = new JButton("sqr");
+        sqrt = new JButton("\u221A");
+        sqr = new JButton("x²"); 
         leftBracket = new JButton("(");
         rightBracket = new JButton(")");
 
-        setBasicButtons();
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(2,2,2,2);
 
-        f.add(p);
-        f.setSize(700, 500);
+        c.gridx = 0; c.gridy = 0;
+        p.add(t, c);
+
+        c.gridx = 0; c.gridy = 2;
+        p.add(seven, c);
+        c.gridx = 1; c.gridy = 2;
+        p.add(eight, c);
+        c.gridx = 2; c.gridy = 2;
+        p.add(nine, c);
+        c.gridx = 3; c.gridy = 2;
+        p.add(divide, c);
+        c.gridx = 5; c.gridy = 2;
+        p.add(clear, c);
+
+        c.gridx = 0; c.gridy = 3;
+        p.add(four, c);
+        c.gridx = 1; c.gridy = 3;
+        p.add(five, c);
+        c.gridx = 2; c.gridy = 3;
+        p.add(six, c);
+        c.gridx = 3; c.gridy = 3;
+        p.add(times, c);
+        c.gridx = 4; c.gridy = 3;
+        p.add(leftBracket, c);
+        c.gridx = 5; c.gridy = 3;
+        p.add(rightBracket, c);
+
+        c.gridx = 0; c.gridy = 4;
+        p.add(one, c);
+        c.gridx = 1; c.gridy = 4;
+        p.add(two, c);
+        c.gridx = 2; c.gridy = 4;
+        p.add(three, c);
+        c.gridx = 3; c.gridy = 4;
+        p.add(minus, c);
+        c.gridx = 4; c.gridy = 4;
+        p.add(sqr, c);
+        c.gridx = 5; c.gridy = 4;
+        p.add(sqrt, c);
+
+        c.gridx = 0; c.gridy = 5;
+        p.add(zero, c);
+        c.gridx = 1; c.gridy = 5;
+        p.add(dot, c);
+        c.gridx = 2; c.gridy = 5;
+        p.add(pcent, c);
+        c.gridx = 3; c.gridy = 5;
+        p.add(plus, c);
+        c.gridx = 4; c.gridy = 5;
+        p.add(equals, c);
+
+
         f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     @Override
@@ -127,40 +185,13 @@ public class BasicCalculator implements Calculator {
     }
 
     @Override
-    public double sqrt(double number) {
+    public double root(double number) {
         return Math.sqrt(number);
     }
 
     @Override
-    public double pow(double number, double power) {
-        return Math.pow(number, power);
+    public double square(double number) {
+        return Math.pow(number, 2);
     }
-
-
-    private void setBasicButtons(){
-        p.add(plus);
-        p.add(minus);
-        p.add(times);
-        p.add(divide);
-        p.add(equals);
-        p.add(clear);
-        p.add(one);
-        p.add(two);
-        p.add(three);
-        p.add(four);
-        p.add(five);
-        p.add(six);
-        p.add(seven);
-        p.add(eight);
-        p.add(nine);
-        p.add(zero);
-        p.add(t);
-        p.add(dot);
-        p.add(pcent);
-        p.add(sqrt);
-        p.add(sqr);
-        p.add(leftBracket);
-        p.add(rightBracket);
-    }
-
+    
 }

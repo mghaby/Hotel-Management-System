@@ -8,6 +8,6 @@ public interface Calculator{
     int div(int... numbers);
     double div(double... numbers);
     double percent(double number);
-    double sqrt(double number);
-    double pow(double number, double power);
+    double root(double number);
+    double square(double number);
 }
