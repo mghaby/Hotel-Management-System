@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// include checkin file
-// include checkout file
+#include "checkIn.h"
+#include "checkOut.h"
 
+// gcc main.c checkIn.c checkOut.c -o main -Wall
 
 int main(int argc, char *argv[]){
     // Variables
