@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "checkIn.h"
-#include "checkOut.h"
+#include "../Include/checkIn.h"
+#include "../Include/checkOut.h"
 
 // gcc main.c checkIn.c checkOut.c -o main -Wall
 
@@ -14,8 +14,8 @@ int main(int argc, char *argv[]){
     unsigned short majorDecisionBool;
 
     // Initialisation
-    fpointer = fopen("db.txt", "r"); 
-    fout = fopen("db.txt", "r+"); // non destructive read and write can also try a+ or w/ w+
+    fpointer = fopen("../docs/db.txt", "r"); 
+    fout = fopen("../docs/db.txt", "r+"); // non destructive read and write can also try a+ or w/ w+
     majorDecisionBool = 1;
 
 
