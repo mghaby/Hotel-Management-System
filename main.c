@@ -1,7 +1,30 @@
 #include <stdio.h>
 
+// include checkin file
+// include checkout file
+
 
 int main(){
+
+    // Hotel ASCII
+
+    // Print Welcome Message
+
+    // Print what you would like to do (1) Check-in, (2) Check-out, (3) Go in Room, (4) Exit
+        // if 1 call the check in start function from check in
+
+        // if 2 call the check out start function from check out
+
+        // if 3 go into room
+            // ask for room number and password
+            // print room ASCII
+            // Print option list : (1) walk out a
+
+        // if 4 exit
+
+
+
+
 
     return 0;
 }
