@@ -1,14 +1,52 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // include checkin file
 // include checkout file
 
 
-int main(){
+int main(int argc, char *argv[]){
+    // Variables
+    FILE *fpointer;
+    FILE *fout;
+    unsigned short majorDecision;
+    unsigned short majorDecisionBool;
+
+    // Initialisation
+    fpointer = fopen("db.txt", "r"); 
+    fout = fopen("db.txt", "r+"); // non destructive read and write can also try a+ or w/ w+
+    majorDecisionBool = 1;
+
+
+    if (fpointer == NULL || fout == NULL){
+        fprintf(stderr, "Error opening file\n");
+        exit(1);
+    }
 
     // Hotel ASCII
 
     // Print Welcome Message
+    printf("Welcome to the Hotel! What would you like to do?\n");
+
+    while (majorDecisionBool == 1){
+        printf("1. Check-in, 2. Check-out, 3. Go to your room or 4. Leave \n");
+        scanf("%hu", &majorDecision);
+        
+            if (majorDecision == 1){ // Check-in
+                printf("Check-in\n");
+            } else if (majorDecision == 2){ // Check-out
+                printf("Check-out\n");
+            } else if (majorDecision == 3){ // Go to your room
+                printf("Go to your room\n");
+            } else if (majorDecision == 4){ // Leave
+                printf("Thank You for Visiting. We hope you enjoyed your stay!\n");
+                majorDecisionBool = 0;
+            } else {
+                printf("Invalid Decision. Try Again\n");
+            }
+    }
+
+
 
     // Print what you would like to do (1) Check-in, (2) Check-out, (3) Go in Room, (4) Exit
         // if 1 call the check in start function from check in
