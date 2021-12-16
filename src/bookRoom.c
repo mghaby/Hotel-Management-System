@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "../Include/bookRoom.h"
 
+int getRooms(unsigned short id, FILE *fp);
 
+int getRoomsVerify(unsigned short id);
 
 
 
