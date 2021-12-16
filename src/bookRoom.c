@@ -1,7 +1,27 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <string.h>
 #include "../Include/bookRoom.h"
 
-int getRooms(unsigned short id, FILE *fp);
+void getRooms(unsigned short id, FILE *fp){
+     const unsigned MAX_LENGTH = 256;
+    char buffer[MAX_LENGTH];
+
+    while (fgets(buffer, MAX_LENGTH, fp)){
+    char * token = strtok(buffer, ",");
+        while (token != NULL){
+            printf("%s", token);
+            token = strtok(NULL, ",");
+        }
+
+
+    }
+    
+
+
+    return 0;
+}
 
 int getRoomsVerify(unsigned short id);
 

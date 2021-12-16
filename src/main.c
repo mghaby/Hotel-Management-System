@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
         scanf("%hu", &majorDecision);
         
             if (majorDecision == 1){ // Book a Room
-                printf("The Rooms available are:\n");r,
+                printf("The Rooms available are:\n");
                 // getRooms
                 // print the rooms
                 printf("Which room would you like to book?\n");
