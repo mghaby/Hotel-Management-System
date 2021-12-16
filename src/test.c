@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
     int roomId;
     int roomIdBool;
 
-    fpointer = fopen("db.txt", "r"); 
+    fpointer = fopen("../docs/db.txt", "r"); 
     //fout = fopen("db.txt", "w+");
     
     if (fpointer == NULL){
@@ -23,8 +23,6 @@ int main(int argc, char *argv[]){
         fscanf(fpointer, "%d %d", &roomId, &roomIdBool);
         printf("Room ID :%d  taken or no :%d\n", roomId, roomIdBool);
     }
-
-
 
     // close the file
     fclose(fpointer);
