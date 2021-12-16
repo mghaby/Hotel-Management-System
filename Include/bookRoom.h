@@ -3,7 +3,7 @@
 
 void getRoomsAvail(FILE *fp);
 
-int getRoomsVerify(unsigned short id);
+int getRoomsBool(unsigned short id, FILE *fp);
 
 
 

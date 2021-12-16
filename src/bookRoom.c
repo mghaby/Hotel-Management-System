@@ -23,7 +23,29 @@ void getRoomsAvail(FILE *fp){
     }
 }
 
-int getRoomsBool(unsigned short id);
+int getRoomsBool(unsigned short id, FILE *fp){
+    int count = 1;
+    int bool = 0;
+
+    while (!feof(fp)){
+       fscanf(fp, "%d %d", &roomId, &roomIdBool);
+
+       if (count == id && roomIdBool == 0){
+           bool = 1;
+       } else {
+           count++;
+       }
+    }
+
+    if (bool == 1){
+        return 1;
+    } else {
+        printf("Sorry, that room is not available.\nPlease choose another room.\n");
+        return 0;
+    }
+
+    
+}
 
 
 /**
@@ -55,8 +77,6 @@ int main(int argc, char *argv[]){
 } 
 */
 
-// for this to work we need to get the available rooms from the database
-// then we need to return what rooms are available
 // then we need to take input from the user asking what room they want
 // then we need to check if the room selected is available (end users arent always going to follow rules)
 // then we need to generate a password for the room

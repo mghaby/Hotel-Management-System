@@ -46,17 +46,18 @@ int main(int argc, char *argv[]){
                 printf("The Rooms available are:\n");
                 getRoomsAvail(fpointer);
                 printf("Which room would you like to book?\n");
+                
                 while (bookingBool){
                     scanf("%hu", &roomBooking);
-                    if (getRoomsVerify(roomBooking) == 1){
-                        // printf("The room is now yours!\n");
+                    fclose(fpointer);
+                    fpointer = fopen("../docs/db.txt", "r");
+                    if ((getRoomsBool(roomBooking, fpointer)) == 1){
+                        printf("The room #%d is now yours!\n", roomBooking);
                         // printf("Your password is: %s\n", getPassword(roomBooking));
                         // printf("You'll need this to checkout and enter your room!\n");
                         // Write to database that the room is booked and the generated password
-                        // bookingBool = 0;
-                    } else {
-                         printf("The room is not available!\n");
-                    }              
+                        bookingBool = 0;
+                    }
                 }
 
             } else if (majorDecision == 2){ // Check-out
@@ -78,8 +79,6 @@ int main(int argc, char *argv[]){
                     //}
 
                 }
-                
-
 
             } else if (majorDecision == 4){ // Leave
                 printf("Thank You for Visiting. We hope you enjoyed your stay!\n");
