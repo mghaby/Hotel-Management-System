@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "../Include/bookRoom.h"
 
 int roomId;
@@ -44,12 +45,28 @@ int getRoomsBool(unsigned short id, FILE *fp){
     }
 }
 
-void createAndWritePassword(FILE *out){
+//
+//void createAndWritePassword(unsigned short id, FILE *out){
+//    char sR[255];
+//    srand(time(NULL));
+//
+//    int r = rand() % 999999;
+//
+//    if (r <= 99999){
+//        r = r + 100000;
+//    }
+//
+//    char sR[255];
+//    sprintf(sR, "%d", r);
+//    fprintf(out, "%s\n", sR);
+//
+//
+//    printf("create and write");
+//}
 
 
+void reserve(unsigned short id){
 
-
-    printf("create and write");
 }
 
 // then we need to generate a password for the room

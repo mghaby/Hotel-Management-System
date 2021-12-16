@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
 
     // Initialisation
     fpointer = fopen("../docs/db.txt", "r"); 
-    fOut = fopen("../docs/db.txt", "r+"); // non destructive // read and write can also try a+ or w/ w+
+    fOut = fopen("../docs/db.txt", "w+");
     majorDecisionBool = 1;
     bookingBool = 1;
     roomBool = 1;
