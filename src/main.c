@@ -89,20 +89,10 @@ int main(int argc, char *argv[]){
             }
     }
 
-
-
-
-
         // if 3 go into room
             // ask for room number and password
             // print room ASCII
-            // Print option list : (1) walk out 
-
-
-
-
-
-
+            // Print option list : (1) walk out
 
     return 0;
 }
