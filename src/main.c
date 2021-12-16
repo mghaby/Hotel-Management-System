@@ -10,7 +10,7 @@
 int main(int argc, char *argv[]){
     // Variables
     FILE *fpointer;
-    FILE *fout;
+    FILE *fOut;
     unsigned short majorDecision;
     unsigned short majorDecisionBool;
 
@@ -23,20 +23,19 @@ int main(int argc, char *argv[]){
 
     // Initialisation
     fpointer = fopen("../docs/db.txt", "r"); 
-    fout = fopen("../docs/db.txt", "r+"); // non destructive // read and write can also try a+ or w/ w+
+    fOut = fopen("../docs/db.txt", "r+"); // non destructive // read and write can also try a+ or w/ w+
     majorDecisionBool = 1;
     bookingBool = 1;
     roomBool = 1;
 
 
-    if (fpointer == NULL || fout == NULL){
+    if (fpointer == NULL || fOut == NULL){
         fprintf(stderr, "Error opening file\n");
         exit(1);
     }
 
     // Hotel ASCII
 
-    // Print Welcome Message
     printf("Welcome to the Hotel! What would you like to do?\n");
 
     while (majorDecisionBool == 1){
@@ -45,20 +44,19 @@ int main(int argc, char *argv[]){
         
             if (majorDecision == 1){ // Book a Room
                 printf("The Rooms available are:\n");
-                // getRooms
-                // print the rooms
+                getRoomsAvail(fpointer);
                 printf("Which room would you like to book?\n");
                 while (bookingBool){
-                scanf("%hu", &roomBooking);
-                    // if (getRoomsVerify(roomBooking) == 1){
+                    scanf("%hu", &roomBooking);
+                    if (getRoomsVerify(roomBooking) == 1){
                         // printf("The room is now yours!\n");
                         // printf("Your password is: %s\n", getPassword(roomBooking));
                         // printf("You'll need this to checkout and enter your room!\n");
                         // Write to database that the room is booked and the generated password
                         // bookingBool = 0;
-                    //} else {
-                        // printf("The room is not available!\n");
-                    //}              
+                    } else {
+                         printf("The room is not available!\n");
+                    }              
                 }
 
             } else if (majorDecision == 2){ // Check-out

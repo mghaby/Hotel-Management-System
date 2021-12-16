@@ -1,7 +1,7 @@
 #ifndef FUNCTIONS_H_INCLUDED
 #define FUNCTIONS_H_INCLUDED
 
-void getRooms(unsigned short id, FILE *fp);
+void getRoomsAvail(FILE *fp);
 
 int getRoomsVerify(unsigned short id);
 
