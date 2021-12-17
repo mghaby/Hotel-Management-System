@@ -28,18 +28,11 @@ cd /Hotel-Management-System/src
 gcc main.c bookRoom.c checkOut.c room.c -o main -Wall
 ```
 
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
 ## Authors
 
 Contributors names and contact info
 
-1. Mark Ghaby (github.com/mghaby)
+1. [@mghaby](https://github.com/mghaby)
 
 ## Version History
 
