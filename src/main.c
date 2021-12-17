@@ -3,9 +3,9 @@
 #include <string.h>
 #include <time.h>
 
-#include "../Include/bookRoom.h"
-#include "../Include/checkOut.h"
-#include "../Include/room.h"
+#include "../include/bookRoom.h"
+#include "../include/checkOut.h"
+#include "../include/room.h"
 
 // gcc main.c bookRoom.c checkOut.c -o main -Wall
 
@@ -13,15 +13,15 @@ int main(int argc, char *argv[]){
     // Variables
     FILE *fpointer;
     FILE *fOut;
-    unsigned short majorDecision;
-    unsigned short majorDecisionBool;
+    unsigned short majorDecision, majorDecisionBool;
 
-    unsigned short roomBooking;
-    unsigned short bookingBool;
+    unsigned short roomBooking, bookingBool;
 
-    unsigned short yourRoomDecision;
-    char yourRoomPassword[7];
-    unsigned short roomBool;
+    unsigned short checkOutId, checkOutBool;
+    int checkOutPass;
+
+    unsigned short yourRoomDecision, roomBool;
+    int yourRoomPassword;
 
     // Initialisation
     fpointer = fopen("../docs/db.txt", "r"); 
@@ -29,6 +29,7 @@ int main(int argc, char *argv[]){
     majorDecisionBool = 1;
     bookingBool = 1;
     roomBool = 1;
+    checkOutBool = 1;
     srand(time(NULL));
 
     // FILE IO Error Handling
@@ -61,8 +62,18 @@ int main(int argc, char *argv[]){
                 }
 
             } else if (majorDecision == 2){ // Check-out
-                printf("Check-out\n");
-
+                printf("Which room would you like to check-out?\n");
+                while (checkOutBool){
+                    scanf("%hu", &checkOutId);
+                    printf("Please enter your password.\n");
+                    scanf("%d", &checkOutPass);
+                    if(checkOut(checkOutId, checkOutPass, fpointer, fOut) == 1){
+                        printf("You have successfully checked out!\n");
+                        checkOutBool = 0;
+                    } else {
+                        printf("Either your Room Number or Password is incorrect.\nPlease enter your Room Number again.\n");
+                    }
+                }
 
             } else if (majorDecision == 3){ // Go to Your Room
                 printf("What is your Room?\n");
@@ -70,7 +81,7 @@ int main(int argc, char *argv[]){
                 // get room number
 
                 // another while loop to get password
-                scanf("%s", &yourRoomPassword);
+                scanf("%u", &yourRoomPassword);
                     // if (checkPassword(yourRoomPassword) == 1){
                         // printf("You're in your room!\n");
                         // exit(1);

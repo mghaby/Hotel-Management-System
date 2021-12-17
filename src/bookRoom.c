@@ -4,7 +4,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "../Include/bookRoom.h"
+#include "../include/bookRoom.h"
 
 // Variables
 int roomId;
@@ -12,7 +12,7 @@ int roomIdBool;
 int pass;
 char sR[255];
 
-// Returns all Available Rooms
+// Returns all available rooms
 void getRoomsAvail(FILE *fp){
     int count = 1;
     char sCount[255];
@@ -28,7 +28,7 @@ void getRoomsAvail(FILE *fp){
     }
 }
 
-// Returns wether a room is available or not given an id
+// Returns whether a room is available or not given an id
 int getRoomsBool(unsigned short id, FILE *fp){
     int count = 1;
     int bool = 0;
@@ -51,7 +51,7 @@ int getRoomsBool(unsigned short id, FILE *fp){
     }
 }
 
-// Generating and Writing Password to pass.txt and setting booked flag to '1'
+// Generating and writing password to pass.txt and setting booked flag to '1'
 void createAndWritePassword(unsigned short id, FILE *fp, FILE *out){
     fclose(fp);
     fp = fopen("../docs/db.txt", "r");

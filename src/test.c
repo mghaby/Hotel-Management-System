@@ -8,21 +8,10 @@ int main(int argc, char *argv[]){
     //Variables
     FILE *fpointer;
     FILE *fOut;
-    char sR[255];
+    char c;
 
-    int roomId;
-    int roomIdBool;
-    int pass;
-    int id = 5;
-
-    int count = 1;
-    int bool = 0;
-    srand(time(NULL));
-
-    int majorBool = 1;
-
-    fpointer = fopen("db.txt", "r");
-    fOut = fopen("bruh.txt", "r+");
+    fpointer = fopen("pass.txt", "r");
+    fOut = fopen("db.txt", "w");
 
     
     if (fpointer == NULL){
@@ -30,8 +19,11 @@ int main(int argc, char *argv[]){
         exit(1);
     }
         
-
-
+    c = fgetc(fpointer);
+    while (c != EOF){
+        fputc(c, fOut);
+        c = fgetc(fpointer);
+    }
 
 
     // close the file
