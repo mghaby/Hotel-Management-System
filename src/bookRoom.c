@@ -8,6 +8,7 @@
 int roomId;
 int roomIdBool;
 int pass;
+char sR[255];
 
 void getRoomsAvail(FILE *fp){
     int count = 1;
@@ -48,12 +49,11 @@ int getRoomsBool(unsigned short id, FILE *fp){
 
 
 void createAndWritePassword(unsigned short id, FILE *fp, FILE *out){
-   char sR[255];
 
     fclose(fp);
     fp = fopen("../docs/db.txt", "r");
-    fclose(out);
-    out = fopen("../docs/pass.txt", "r+");
+    // fclose(out);
+    // out = fopen("../docs/pass.txt", "r+");
 
     while (!feof(fp)){
         fscanf(fp, "%d %d %d", &roomId, &roomIdBool, &pass);
@@ -66,8 +66,8 @@ void createAndWritePassword(unsigned short id, FILE *fp, FILE *out){
 
         if (roomId == id) {
             pass = n;
+            roomIdBool = 1;
             printf("Your password is: %d\nBe sure to not lose this as you need this to get into your room and check-out!\n", pass);
-            reserve(id, out);
         }
 
         sprintf(sR, "%d %d %d\n", roomId, roomIdBool, pass);
@@ -76,11 +76,3 @@ void createAndWritePassword(unsigned short id, FILE *fp, FILE *out){
 
    }
 }
-
-
-void reserve(unsigned short id, FILE *out){
-    
-
-}
-
-// then we need to write to the database that the room is booked

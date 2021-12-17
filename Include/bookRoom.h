@@ -7,6 +7,4 @@ int getRoomsBool(unsigned short id, FILE *fp);
 
 void createAndWritePassword(unsigned short id, FILE *fp, FILE *out);
 
-void reserve(unsigned short id, FILE *out);
-
 #endif
