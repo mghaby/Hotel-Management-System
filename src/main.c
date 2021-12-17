@@ -7,8 +7,6 @@
 #include "../include/checkOut.h"
 #include "../include/room.h"
 
-// gcc main.c bookRoom.c checkOut.c room.c -o main -Wall
-
 int main(int argc, char *argv[]){
     // Variables
     FILE *fpointer;
