@@ -12,6 +12,9 @@ char sR[255];
 
 // Returns all available rooms
 void getRoomsAvail(FILE *fp){
+    fclose(fp);
+    fp = fopen("../docs/db.txt", "r");
+
     int count = 1;
     char sCount[255];
 
@@ -30,6 +33,8 @@ void getRoomsAvail(FILE *fp){
 int getRoomsBool(unsigned short id, FILE *fp){
     int count = 1;
     int bool = 0;
+    fclose(fp);
+    fp = fopen("../docs/db.txt", "r");
 
     while (!feof(fp)){
        fscanf(fp, "%d %d %d", &roomId, &roomIdBool, &pass);

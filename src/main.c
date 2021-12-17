@@ -5,8 +5,9 @@
 
 #include "../include/bookRoom.h"
 #include "../include/checkOut.h"
+#include "../include/room.h"
 
-// gcc main.c bookRoom.c checkOut.c -o main -Wall
+// gcc main.c bookRoom.c checkOut.c room.c -o main -Wall
 
 int main(int argc, char *argv[]){
     // Variables
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]){
     unsigned short checkOutId, checkOutBool;
     int checkOutPass;
 
-    unsigned short yourRoomDecision, roomBool;
+    unsigned short roomNum, roomBool;
     int yourRoomPassword;
 
     // Initialisation
@@ -51,13 +52,11 @@ int main(int argc, char *argv[]){
                 
                 while (bookingBool){
                     scanf("%hu", &roomBooking);
-                    fclose(fpointer);
-                    fpointer = fopen("../docs/db.txt", "r");
-                    if ((getRoomsBool(roomBooking, fpointer)) == 1){
-                        printf("The room #%d is now yours!\n", roomBooking);
-                        createAndWritePassword(roomBooking, fpointer, fOut);
-                        bookingBool = 0;
-                    }
+                        if ((getRoomsBool(roomBooking, fpointer)) == 1){
+                            printf("The room #%d is now yours!\n", roomBooking);
+                            createAndWritePassword(roomBooking, fpointer, fOut);
+                            bookingBool = 0;
+                        }
                 }
 
             } else if (majorDecision == 2){ // Check-out
@@ -66,28 +65,26 @@ int main(int argc, char *argv[]){
                     scanf("%hu", &checkOutId);
                     printf("Please enter your password.\n");
                     scanf("%d", &checkOutPass);
-                    if(checkOut(checkOutId, checkOutPass, fpointer, fOut) == 1){
-                        printf("You have successfully checked out!\n");
-                        checkOutBool = 0;
-                    } else {
-                        printf("Either your Room Number or Password is incorrect.\nPlease enter your Room Number again.\n");
-                    }
+                        if(checkOut(checkOutId, checkOutPass, fpointer, fOut) == 1){
+                            printf("You have successfully checked out!\n");
+                            checkOutBool = 0;
+                        } else {
+                            printf("Either your Room Number or Password is incorrect.\nPlease enter your Room Number again.\n");
+                        }
                 }
 
             } else if (majorDecision == 3){ // Go to Your Room
                 printf("What is your Room?\n");
                 while(roomBool){
-                // get room number
-
-                // another while loop to get password
-                scanf("%u", &yourRoomPassword);
-                    // if (checkPassword(yourRoomPassword) == 1){
-                        // printf("You're in your room!\n");
-                        // exit(1);
-                    //} else {
-                        // printf("Wrong password!\n");
-                    //}
-
+                    scanf("%hu", &roomNum);
+                    printf("Please enter your password.\n");
+                    scanf("%d", &yourRoomPassword);
+                        if (checkPassword(roomNum, yourRoomPassword, fpointer) == 1){
+                            printf("You're in your room!\n");
+                            roomBool = 0;
+                        } else {
+                            printf("Wrong Room or Password!\nPlease try again.\n");
+                        }
                 }
 
             } else if (majorDecision == 4){ // Leave Hotel
