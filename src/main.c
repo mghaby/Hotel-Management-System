@@ -31,15 +31,15 @@ int main(int argc, char *argv[]){
     roomBool = 1;
     srand(time(NULL));
 
+    // FILE IO Error Handling
     if (fpointer == NULL || fOut == NULL){
         fprintf(stderr, "Error opening file\n");
         exit(1);
     }
 
-    // Hotel ASCII
-
     printf("Welcome to the Hotel! What would you like to do?\n");
 
+    // Major Decision Loop
     while (majorDecisionBool == 1){
         printf("1. Book a Room, 2. Check-out, 3. Go to Your Room or 4. Leave \n");
         scanf("%hu", &majorDecision);
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
                 printf("Check-out\n");
 
 
-            } else if (majorDecision == 3){ // Go to your room
+            } else if (majorDecision == 3){ // Go to Your Room
                 printf("What is your Room?\n");
                 while(roomBool){
                 // get room number
@@ -80,22 +80,17 @@ int main(int argc, char *argv[]){
 
                 }
 
-            } else if (majorDecision == 4){ // Leave
+            } else if (majorDecision == 4){ // Leave Hotel
                 printf("Thank You for Visiting. We hope you enjoyed your stay!\n");
                 exit(1);
 
-            } else {
+            } else { // Default
                 printf("Invalid Decision. Try Again\n");
             }
     }
 
-        // if 3 go into room
-            // ask for room number and password
-            // print room ASCII
-            // Print option list : (1) walk out
-
+    // Closing Statements
     fclose(fpointer);
     fclose(fOut);
-
     return 0;
 }
