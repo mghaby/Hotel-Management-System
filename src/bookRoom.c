@@ -7,13 +7,14 @@
 
 int roomId;
 int roomIdBool;
+int pass;
 
 void getRoomsAvail(FILE *fp){
     int count = 1;
     char sCount[255];
 
     while (!feof(fp)){
-        fscanf(fp, "%d %d", &roomId, &roomIdBool);
+        fscanf(fp, "%d %d %d", &roomId, &roomIdBool, &pass);
 
         if (roomIdBool == 0){ 
             sprintf(sCount, "Available: %d\n", count);
@@ -28,7 +29,7 @@ int getRoomsBool(unsigned short id, FILE *fp){
     int bool = 0;
 
     while (!feof(fp)){
-       fscanf(fp, "%d %d", &roomId, &roomIdBool);
+       fscanf(fp, "%d %d %d", &roomId, &roomIdBool, &pass);
 
        if (count == id && roomIdBool == 0){
            bool = 1;
@@ -45,29 +46,41 @@ int getRoomsBool(unsigned short id, FILE *fp){
     }
 }
 
-//
-//void createAndWritePassword(unsigned short id, FILE *out){
-//    char sR[255];
-//    srand(time(NULL));
-//
-//    int r = rand() % 999999;
-//
-//    if (r <= 99999){
-//        r = r + 100000;
-//    }
-//
-//    char sR[255];
-//    sprintf(sR, "%d", r);
-//    fprintf(out, "%s\n", sR);
-//
-//
-//    printf("create and write");
-//}
+
+void createAndWritePassword(unsigned short id, FILE *fp, FILE *out){
+   char sR[255];
+
+    fclose(fp);
+    fp = fopen("../docs/db.txt", "r");
+    fclose(out);
+    out = fopen("../docs/pass.txt", "r+");
+
+    while (!feof(fp)){
+        fscanf(fp, "%d %d %d", &roomId, &roomIdBool, &pass);
+
+        int n = rand() % 999999;
+
+        if (n <= 99999){
+            n = n + 100000;
+        }
+
+        if (roomId == id) {
+            pass = n;
+            printf("Your password is: %d\nBe sure to not lose this as you need this to get into your room and check-out!\n", pass);
+            reserve(id, out);
+        }
+
+        sprintf(sR, "%d %d %d\n", roomId, roomIdBool, pass);
+        //fwrite(sR, sizeof(char), strlen(sR), out); // +-------------------------------------------
+        fprintf(out, "%s", sR); // +------------------------------------------- Everything working up to this print (wont write to text file)
+
+   }
+}
 
 
-void reserve(unsigned short id){
+void reserve(unsigned short id, FILE *out){
+    
 
 }
 
-// then we need to generate a password for the room
 // then we need to write to the database that the room is booked

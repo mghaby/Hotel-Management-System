@@ -7,12 +7,13 @@
 int main(int argc, char *argv[]){
     //Variables
     FILE *fpointer;
-    //FILE *fOut;
+    FILE *fOut;
     char sR[255];
 
     int roomId;
     int roomIdBool;
     int pass;
+    int id = 5;
 
     int count = 1;
     int bool = 0;
@@ -20,8 +21,8 @@ int main(int argc, char *argv[]){
 
     int majorBool = 1;
 
-    fpointer = fopen("db.txt", "r+");
-    //fOut = fopen("db.txt", "w+");
+    fpointer = fopen("db.txt", "r");
+    fOut = fopen("bruh.txt", "r+");
 
     
     if (fpointer == NULL){
@@ -31,16 +32,24 @@ int main(int argc, char *argv[]){
         
     while (majorBool){ // ------------------------------------------------------
 
+
     while (!feof(fpointer)){
-        fscanf(fpointer, "%d %d", &roomId, &roomIdBool);
+        fscanf(fpointer, "%d %d %d", &roomId, &roomIdBool, &pass);
 
         int n = rand() % 999999;
         if (n <= 99999){
             n = n + 100000;
         }
 
-        sprintf(sR, "%d %d %d\n", roomId, roomIdBool, n);
-        printf("%s", sR); // up to here it is working, we just need it to write properly -- try freeing fpointer and re initing it
+        if (id == count){
+            pass = n;
+        }
+
+        sprintf(sR, "%d %d %d\n", roomId, roomIdBool, pass);
+        fprintf(fOut, "%s", sR);
+
+        count++;
+
     }
 
     majorBool = 0;
@@ -51,7 +60,7 @@ int main(int argc, char *argv[]){
 
     // close the file
     fclose(fpointer);
-    //fclose(fOut);
+    fclose(fOut);
 
     return 0;
 

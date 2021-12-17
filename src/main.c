@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 #include "../Include/bookRoom.h"
 #include "../Include/checkOut.h"
@@ -23,11 +25,11 @@ int main(int argc, char *argv[]){
 
     // Initialisation
     fpointer = fopen("../docs/db.txt", "r"); 
-    fOut = fopen("../docs/db.txt", "w+");
+    fOut = fopen("../docs/pass.txt", "r+");
     majorDecisionBool = 1;
     bookingBool = 1;
     roomBool = 1;
-
+    srand(time(NULL));
 
     if (fpointer == NULL || fOut == NULL){
         fprintf(stderr, "Error opening file\n");
@@ -53,9 +55,7 @@ int main(int argc, char *argv[]){
                     fpointer = fopen("../docs/db.txt", "r");
                     if ((getRoomsBool(roomBooking, fpointer)) == 1){
                         printf("The room #%d is now yours!\n", roomBooking);
-                        // printf("Your password is: %s\n", getPassword(roomBooking));
-                        // printf("You'll need this to checkout and enter your room!\n");
-                        // Write to database that the room is booked and the generated password
+                        createAndWritePassword(roomBooking, fpointer, fOut);
                         bookingBool = 0;
                     }
                 }
@@ -93,6 +93,9 @@ int main(int argc, char *argv[]){
             // ask for room number and password
             // print room ASCII
             // Print option list : (1) walk out
+
+    fclose(fpointer);
+    fclose(fOut);
 
     return 0;
 }
