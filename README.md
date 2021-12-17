@@ -26,6 +26,7 @@ git clone https://github.com/mghaby/Hotel-Management-System.git
 ```
 cd /Hotel-Management-System/src
 gcc main.c bookRoom.c checkOut.c room.c -o main -Wall
+./main
 ```
 
 ## Authors
