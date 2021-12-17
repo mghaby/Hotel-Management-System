@@ -7,9 +7,7 @@
 #include "../include/bookRoom.h"
 
 // Variables
-int roomId;
-int roomIdBool;
-int pass;
+int roomId, roomIdBool, pass;
 char sR[255];
 
 // Returns all available rooms

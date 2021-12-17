@@ -3,4 +3,6 @@
 
 int checkOut(unsigned int id, int passW, FILE *fp, FILE *out);
 
+void syncDB();
+
 #endif

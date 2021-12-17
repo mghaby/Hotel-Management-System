@@ -13,7 +13,6 @@ int main(int argc, char *argv[]){
     fpointer = fopen("pass.txt", "r");
     fOut = fopen("db.txt", "w");
 
-    
     if (fpointer == NULL){
         fprintf(stderr, "Error opening file\n");
         exit(1);
@@ -24,7 +23,6 @@ int main(int argc, char *argv[]){
         fputc(c, fOut);
         c = fgetc(fpointer);
     }
-
 
     // close the file
     fclose(fpointer);

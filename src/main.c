@@ -5,7 +5,6 @@
 
 #include "../include/bookRoom.h"
 #include "../include/checkOut.h"
-#include "../include/room.h"
 
 // gcc main.c bookRoom.c checkOut.c -o main -Wall
 
