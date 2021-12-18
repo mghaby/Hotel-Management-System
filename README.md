@@ -31,9 +31,9 @@ gcc main.c bookRoom.c checkOut.c room.c -o main -Wall
 
 ## Authors
 
-Contributors names and contact info
-
-1. [@mghaby](https://github.com/mghaby)
+1. Mark Ghaby
+  * [Github](https://github.com/mghaby)
+  * [LinkedIn](https://www.linkedin.com/in/mghaby/)
 
 ## Version History
 
